@@ -22,22 +22,28 @@ Bash is a UNIX shell released in 1989. It is a command line interpreter which co
 Apropos proposes manual pages related to a specified keyword.
 
 Examples:  
+```bash
 $ apropos help  
 $ apropos password  
+```
 
 ### man
 Man is short for manual. It will open a user manual for that command.
 
 Examples:  
+```bash
 $ man echo  
 $ man apropos  
+```
 
 ### help, --help or -h
 When you already know a command, but can't remember the exact use, you can just use --help flag.
 
 Examples:  
+```bash
 $ echo --help  
 $ ls --help  
+```
 
 ## First Orientation
 
@@ -45,13 +51,17 @@ $ ls --help
 Displays the user currently using the terminal. Handy to know when working with remote machines.
 
 Example  
+```bash
 $ whoami  
+```
 
 ### pwd
 pwd - print working directory
 
 Example:  
+```bash
 $ pwd  
+```
 
 ### history
 Displays the history of commands used in the terminal.
