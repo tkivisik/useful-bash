@@ -1,9 +1,16 @@
-# Handy Command Line Tools Notes
+# Useful Command Line One-Liners
 Curator: Taavi Kivisik
+
+These notes are meant for Bash beginners to:
+* get familiar with Bash basics
+* see some examples what can be done with one-liners
+* know how to continue learning Bash while using it (getting help)
+* learn some tricks often unknown to Bash users, like apropos, cat > file.txt, cd -, &, cut, paste
 
 Remarks:
 * Dollar sign indicates a command line. When testing out examples, enter everything after the dollar sign.
 * Everything after bars (#) is a comment and doesn't influence the command.
+* Commands have options to expand their functionality. See them by typing a command name followed by '--help'.
 
 Mainly based on:
 * System's manual (man) pages
@@ -45,10 +52,13 @@ $ echo --help
 $ ls --help  
 ```
 
+### www
+Just search for it online.
+
 ## First Orientation
 
 ### whoami
-Displays the user currently using the terminal. Handy to know when working with remote machines.
+whoami is short for *Who am I* and it displays the user currently using the terminal. It's useful to know when working with remote machines.
 
 Example  
 ```bash
@@ -56,7 +66,7 @@ $ whoami
 ```
 
 ### pwd
-pwd - print working directory
+pwd is short for print working directory.
 
 Example:  
 ```bash
@@ -124,7 +134,7 @@ Update the access and modification times of each FILE to the current time. Often
 
 Example:  
 ```bash
-$ touch existing_file.txt    # modification time changed to current time.  
+$ touch existing_file.txt   # modification time changed to current time.  
 $ touch new_file_01.txt  
 $ touch new_file_01.txt new_file_02.txt  
 ```
@@ -145,15 +155,20 @@ cp is short for copy. Copies a file, directory or files and directories.
 
 Examples:  
 ```bash
-$ cp source_file.txt source_file_copy_name.txt  
-$ cp /home/user/files/*.txt /home/user/copied_text_files/  
+$ cp source_file.txt source_file_copy_name.txt              # Copies to the current directory
+$ cp source_file.txt some/other/folder/source_file.txt      # Copies to another folder  
+$ cp /home/user/files/*.txt /home/user/copied_text_files/   # Copies only all .txt files to a new location
 ```
 
 ### mv
 mv is short for move. Moves (same as renaming) a file.
 
 Examples:  
-look cp examples.  
+```bash
+$ mv source_file.txt source_file_renamed.txt  
+$ mv source_file.txt some/other/folder/source_file.txt  
+$ mv /home/user/files/*.txt /home/user/copied_text_files/   # Moves only all .txt files to a new location
+```
 
 ## Getting an Impression of Files
 
@@ -163,7 +178,7 @@ Prints the top 10 rows of a file to standard out (terminal by default).
 Examples:  
 ```bash
 $ head notes.txt  
-$ head -n 100 notes.txt  
+$ head -n 100 notes.txt     # Prints the top 100 lines of a file
 ```
 
 ### tail
@@ -172,7 +187,7 @@ Prints the bottom 10 rows of a file to standard out (terminal by default).
 Examples:  
 ```bash
 $ tail notes.txt  
-$ tail -n 100 notes.txt  
+$ tail -n 100 notes.txt     # Prints the bottom 100 lines of a file
 ```
 
 ### less
@@ -190,7 +205,7 @@ Examples:
 ```bash
 $ cat notes.txt  
 $ cat notes.txt examples.txt  
-$ cat notes.txt examples.txt > two_files_together.txt  
+$ cat notes.txt examples.txt > two_files_together.txt   # Writes the output to a file called two_files_together.txt
 $ cat > notes.txt     # writes everything you write to notes.txt until CTRL+C is pressed  
 ```
 
@@ -208,13 +223,14 @@ wc is short for word count. Prints newline, word and byte counts.
 Examples:  
 ```bash
 $ wc notes.txt  
-$ wc -l notes.txt     # only prints the line count.  
+$ wc -l notes.txt   # only prints the line count.  
+$ wc folder/*       # prints word counts for all files in the folder
 ```
 
 ## Combining Commands
 
 ### >
-Takes an output from the command on the left and writes it to a file on the right. Overwrites by default.
+Takes an output from the command on the left and writes it to a file on the right. **Overwrites** by default.
 
 Example:  
 ```bash
@@ -224,7 +240,7 @@ $ cat > notes.txt     # writes everything you write to notes.txt until CTRL+C is
 ```
 
 ### >>
-Appends the output from the command on the left to a file 
+Appends the output from the command on the left to a file on the right.
 
 Examples:  
 ```bash
@@ -238,8 +254,9 @@ $ cat >> notes.txt     # appends everything you write to notes.txt until CTRL+C 
 
 Examples:  
 ```bash
+# From notes.txt find lines with 'ls', then find lines with 'short' in them from those lines, write the result to a file
 $ grep ls notes.txt | grep short > lines_with_ls_and_short_in_them.txt  
-$ ls -lh | grep .txt      # print access data, human readable sizes and names of txt files  
+$ ls -lh | grep .txt    # print access data, human readable sizes and names of txt files  
 ```
 
 ### <
@@ -250,11 +267,22 @@ Example:
 $ cat > calculations.txt  
 1+1  
 2+2  
-3+3             # Finish writing to calculations.txt by pressing CTRL+C  
+3+3  
+<CTRL+C>                # Finish writing to calculations.txt by pressing CTRL+C  
 $ bc < calculations.txt  
 2  
 4  
 6  
+$ bc < calculations.txt > results.txt   # Same as previous, but writes the results to a file
+```
+
+### &
+Command on the left is run in the background. For example, when you are editing a huge file, you might want to continue with other things in the terminal window. Instead of opening up a new terminal, you can add the ampersand symbol to the end of the command.
+
+Example:
+```bash  
+$ wc folder/* &             # This command is run in the background
+$ jobs                      # View all background jobs  
 ```
 
 ## Manipulating Files
@@ -273,10 +301,11 @@ Sorts rows of a file.
 Example:  
 ```bash
 $ sort file.txt  
+$ sort -r file.txt      # Sort in reverse order
 ```
 
 ### cut
-Print selected parts of lines from each file to standard output.
+Print selected part(s) of lines from each file to standard output. Think of it as splitting the line at a specific delimiter and then selecting desired fields from that list. Default delimiter is TAB and indexing of fields after splitting starts from 1.
 
 Examples:  
 ```bash  
@@ -285,7 +314,7 @@ $ cut -d ';' -f 2-3 table.csv # prints the second and third column of a semicolo
 ```
 
 ### paste
-Appends the corresponding lines of files. Can be used to add a new column.
+Appends the corresponding lines of files. Can be used to add a new column. Default delimiter is TAB.
 
 Example:  
 ```bash  
@@ -311,26 +340,32 @@ $ split large_file.csv
 ```
 
 ### sed
-sed is short for steam editor.
+sed is short for stream editor. It is often used for replacing elements in a file. There are books written about sed, so learn more about it with 'sed --help' and 'man sed'.
 
-Example:  
+You can use it for replacing patterns as follows:
 ```bash  
-$ cat > text.txt  
+sed s/pattern/replacement/ source_file.txt       # Replaces the first ocurrance of a pattern with a replacement in every line.
+sed s/pattern/replacement/g source_file.txt     # Replaces all occurrances of a pattern with a replacement.  
+```
+
+Examples:  
+```bash  
+$ cat > source_text.txt  
 abcabc  
 cbacba  
 <CTRL+C>  
-$ sed s/a/A/ text.txt       # Replaces the first ocurrance of a with A in every line.  
+$ sed s/a/A/ source_text.txt       # Replaces the first ocurrance of a with A in every line.  
 Abcabc  
 cbAcba  
-$ sed s/a/A/g text.txt      # Prints the output with a replaced with A  
+$ sed s/a/A/g source_text.txt      # Prints the output with a replaced with A  
 AbcAbc  
 cbAcbA  
-$ sed -i s/a/A/g text.txt   # Replaces a with A in the source file itself.  
-$ sed s/a/A/g text.txt > new.txt    # Writes the replaced version of the file to new.txt, keeps the original file as was.  
+$ sed -i s/a/A/g source_text.txt   # Replaces a with A in the source file itself.  
+$ sed s/a/A/g source_text.txt > new.txt    # Writes the replaced version of the file to new.txt, keeps the original file as was.  
 ```
 
 ### tr
-tr is short for translate. It translates, squeezes, and/or deletes characters from standard input to standard output.
+tr is short for translate. It translates (replaces), squeezes (removes duplicates), and/or deletes characters from standard input to standard output.
 
 Examples:  
 ```bash  
@@ -338,21 +373,19 @@ $ cat > text.txt
 abcabc  
 cbacba  
 <CTRL+C>  
-$ cat text.txt | tr a A  
+$ cat text.txt | tr a A         # a is mapped to A
 AbcAbc  
 cbAcbA  
-$ cat text.txt | tr a-z A-Z  
+$ cat text.txt | tr a-z A-Z     # lower case letters are mapped to upper case letters
 ABCABC  
 CBACBA  
-$ cat text.txt | tr ab ,  | tr -s ,   
-```
-
-* first tr outputs:  
+$ cat text.txt | tr ab ,        # elements in the first set [ab] are mapped to the second set [,]
 ,,c,,c  
 c,,c,,  
-* second tr squeezes the sequential commas to become one, therefore outputs:  
+$ cat text.txt | tr ab ,  | tr -s ,     # -s squeezes duplicate commas to have one comma.
 ,c,c  
 c,c,  
+```
 
 ### diff
 diff is short for difference and it compares files line by line.
