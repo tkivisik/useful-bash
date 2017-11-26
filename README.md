@@ -17,8 +17,6 @@ Mainly based on:
 * Commands' help
 * EdX course named Introduction to Linux
 
-
-
 ## Bash
 
 Bash is a UNIX shell released in 1989. It is a command line interpreter which comes with most Linux distributions, also macOS and Windows 10.
@@ -51,6 +49,10 @@ Examples:
 $ echo --help  
 $ ls --help  
 ```
+
+### TLDR pages
+[TLDR pages](https://tldr.sh/ "TLDR project") are a community effort to simplify the man pages with practical examples. You can install the tldr bash client to get examples of commands on the command line:
+* [tldr-bash-client](https://github.com/pepa65/tldr-bash-client "TLDR Bash client")
 
 ### www
 Just search for it online.
