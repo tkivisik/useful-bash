@@ -1,5 +1,5 @@
 #!/bin/bash
-mkdir paste_testing_folder cut_testing_folder cat_testing_folder
+mkdir paste_testing_folder cut_testing_folder cat_testing_folder diff_testing_folder
 
 # Files for paste_testing_folder
 echo Hannah > paste_testing_folder/names.txt
@@ -24,3 +24,13 @@ echo Hannah,75 > cat_testing_folder/row1.txt
 echo Joe,65 > cat_testing_folder/row2.txt
 echo Maria,85 > cat_testing_folder/row3.txt
 echo Sebastian,95 > cat_testing_folder/row4.txt
+
+# Files for diff_testing_folder
+echo first > diff_testing_folder/older_file.txt
+echo second >> diff_testing_folder/older_file.txt
+echo third >> diff_testing_folder/older_file.txt
+echo fourth >> diff_testing_folder/older_file.txt
+echo fifth >> diff_testing_folder/older_file.txt
+head -n 2 diff_testing_folder/older_file.txt >> diff_testing_folder/newer_file.txt
+echo after_second_before_third >> diff_testing_folder/newer_file.txt
+tail -n 3 diff_testing_folder/older_file.txt >> diff_testing_folder/newer_file.txt
