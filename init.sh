@@ -1,22 +1,25 @@
 #!/bin/bash
-mkdir paste_testing_folder cut_testing_folder cat_testing_folder diff_testing_folder
+mkdir paste_testing_folder cut_testing_folder cat_testing_folder diff_testing_folder split_testing_folder
 
 # Files for paste_testing_folder
-echo Hannah > paste_testing_folder/names.txt
-echo Joe >> paste_testing_folder/names.txt
-echo Maria >> paste_testing_folder/names.txt
-echo Sebastian >> paste_testing_folder/names.txt
+name_file_path=paste_testing_folder/names.txt
+echo Hannah > $name_file_path
+echo Joe >> $name_file_path
+echo Maria >> $name_file_path
+echo Sebastian >> $name_file_path
 
-echo 21 > paste_testing_folder/ages.txt
-echo 22 >> paste_testing_folder/ages.txt
-echo 20 >> paste_testing_folder/ages.txt
-echo 23 >> paste_testing_folder/ages.txt
+age_file_path=paste_testing_folder/ages.txt
+echo 21 > $age_file_path
+echo 22 >> $age_file_path
+echo 20 >> $age_file_path
+echo 23 >> $age_file_path
 
 # Files for cut_testing_folder
-echo a,1,2,3,4,5,6 > cut_testing_folder/cut_the_third_column.txt
-echo b,4,3,5,0,8,9 > cut_testing_folder/cut_the_third_column.txt
-echo c,8,4,6,4,8,6 > cut_testing_folder/cut_the_third_column.txt
-echo d,4,6,3,5,5,5 > cut_testing_folder/cut_the_third_column.txt
+cut_file_path=cut_testing_folder/cut_the_third_column.txt
+echo a,1,2,3,4,5,6 > $cut_file_path
+echo b,4,3,5,0,8,9 >> $cut_file_path
+echo c,8,4,6,4,8,6 >> $cut_file_path
+echo d,4,6,3,5,5,5 >> $cut_file_path
 
 # Files for cat_testing_folder
 echo name,fame > cat_testing_folder/column_header.txt
@@ -26,11 +29,25 @@ echo Maria,85 > cat_testing_folder/row3.txt
 echo Sebastian,95 > cat_testing_folder/row4.txt
 
 # Files for diff_testing_folder
-echo first > diff_testing_folder/older_file.txt
-echo second >> diff_testing_folder/older_file.txt
-echo third >> diff_testing_folder/older_file.txt
-echo fourth >> diff_testing_folder/older_file.txt
-echo fifth >> diff_testing_folder/older_file.txt
-head -n 2 diff_testing_folder/older_file.txt >> diff_testing_folder/newer_file.txt
-echo after_second_before_third >> diff_testing_folder/newer_file.txt
-tail -n 3 diff_testing_folder/older_file.txt >> diff_testing_folder/newer_file.txt
+older_file_path=diff_testing_folder/older_file.txt
+newer_file_path=diff_testing_folder/newer_file.txt
+
+echo first > $older_file_path
+echo second >> $older_file_path
+echo third >> $older_file_path
+echo fourth >> $older_file_path
+echo fifth >> $older_file_path
+head -n 2 $older_file_path >> $newer_file_path
+echo after_second_before_third >> $newer_file_path
+tail -n 3 $older_file_path >> $newer_file_path
+
+# File for split_testing_folder
+split_testing_folder=split_testing_folder
+for i in {1..10101}; do
+    echo $(( ( RANDOM % 10 )  + 1 )) >> $split_testing_folder/1.txt
+    echo $(( ( RANDOM % 100 )  + 1 )) >> $split_testing_folder/2.txt
+    echo $(( ( RANDOM % 20 )  + 1 )) >> $split_testing_folder/3.txt
+    echo $(( ( RANDOM % 50 )  + 1 )) >> $split_testing_folder/4.txt
+    done
+paste -d ',' $split_testing_folder/1.txt $split_testing_folder/2.txt $split_testing_folder/3.txt $split_testing_folder/4.txt > $split_testing_folder/split_this.txt
+rm $split_testing_folder/?.txt
