@@ -43,7 +43,7 @@ tail -n 3 $older_file_path >> $newer_file_path
 
 # File for split_testing_folder
 split_testing_folder=split_testing_folder
-for i in {1..10101}; do
+for i in {1..300250}; do
     echo $(( ( RANDOM % 10 )  + 1 )) >> $split_testing_folder/1.txt
     echo $(( ( RANDOM % 100 )  + 1 )) >> $split_testing_folder/2.txt
     echo $(( ( RANDOM % 20 )  + 1 )) >> $split_testing_folder/3.txt
