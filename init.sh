@@ -29,21 +29,31 @@ echo Maria,85 > cat_testing_folder/row3.txt
 echo Sebastian,95 > cat_testing_folder/row4.txt
 
 # Files for diff_testing_folder
-older_file_path=diff_testing_folder/older_file.txt
-newer_file_path=diff_testing_folder/newer_file.txt
+older_file_path=diff_testing_folder/base_file.txt
+newer_file_path=diff_testing_folder/lines_added_removed.txt
+newest_file_path=diff_testing_folder/lines_changed.txt
 
 echo first > $older_file_path
 echo second >> $older_file_path
 echo third >> $older_file_path
 echo fourth >> $older_file_path
 echo fifth >> $older_file_path
-head -n 2 $older_file_path >> $newer_file_path
-echo after_second_before_third >> $newer_file_path
-tail -n 3 $older_file_path >> $newer_file_path
+echo sixth >> $older_file_path
+echo seventh >> $older_file_path
+
+cp $older_file_path $newer_file_path
+## Deletes the 4th to 5th line
+sed -i '4,5d' $newer_file_path
+## insert 'after_second_before_third' after second line (2i), replace the existing file in place (-i)
+sed -i '2iafter_second_before_third' $newer_file_path 
+
+cp $older_file_path $newest_file_path
+sed -i 's/e[cn]/E/g' $newest_file_path
+
 
 # File for split_testing_folder
 split_testing_folder=split_testing_folder
-for i in {1..300250}; do
+for i in {1..30250}; do
     echo $(( ( RANDOM % 10 )  + 1 )) >> $split_testing_folder/1.txt
     echo $(( ( RANDOM % 100 )  + 1 )) >> $split_testing_folder/2.txt
     echo $(( ( RANDOM % 20 )  + 1 )) >> $split_testing_folder/3.txt
