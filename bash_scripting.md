@@ -19,6 +19,19 @@ Type *bash* followed by your script name (*hello_world.sh*)
 $ bash hello_world.sh
 ```
 
+## Conditionals
+
+```bash
+a=1
+if [ $a -eq 1 ]; then
+    echo a is equal to 1
+elif [ $a -lt 1 ]; then
+    echo a is less than 1
+else
+    echo a is greater than 1
+fi
+```
+
 ## Looping
 
 ### For Loop for Multiplication Table
