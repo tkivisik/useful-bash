@@ -3,13 +3,21 @@
 ## Absolute Basics
 
 ### Simplest Bash Script
-The very first line of a script file which starts with a **#!** is called a **shebang**. It tells the operating system where to find a program (bash) which should be used to run the script file. 
 
 When you save the following code as hello_world.sh
 ```bash
+#!/usr/bin/env bash
+echo Hello World!
+```
+
+### Shebang
+The very first line of a script file which starts with a **#!** is called a **shebang** or **hashbang**. It tells the operating system where to find a program (bash) which should be used to run the script file.
+
+Often people also use an absolute path to bash, but that is discouraged due to the different locations where bash could be installed to in different distributions.
+
+```bash
 #!/bin/bash
 echo Hello World!
-
 ```
 
 ### Running a Bash Script
@@ -19,7 +27,18 @@ Type *bash* followed by your script name (*hello_world.sh*)
 $ bash hello_world.sh
 ```
 
+## Variable Assignment and Use
+
+```bash
+#!/usr/bin/env bash
+a=1
+b=2
+echo a is $a and b is $b
+echo $a \+ $b \= $[ $a + $b ]
+```
+
 ## Conditionals
+Here is a list of logical operators for comparing integers and strings: [use of logical operators](http://tldp.org/LDP/abs/html/comparison-ops.html) 
 
 ```bash
 a=1
