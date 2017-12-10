@@ -110,6 +110,30 @@ while [ $i -lt 6 ]; do
 done
 ```
 
+## Functions
+
+* **$#** - represents the number of arguments passed to the program (outside of a function) or to the function (inside of a function).
+* **$@** - represents the arguments passed to the program (outside of a function) or to the function (inside of a function).
+
+```bash
+#!/usr/bin/env bash
+argument_counter () {
+    echo Function argument count: $# 
+    echo Function arguments: $@
+    echo "Function's First argument was: $1"
+}
+
+echo Script is the argument number 0: $0
+echo Program argument count: $# 
+echo Program arguments : $@
+# Pass all program arguments to the function, and add the first,
+# second and first again argument once again.
+argument_counter $@ $1 $2 $1
+```
+
 ## Example Bash Scripts
 
-See scripting_examples folder for Bash script examples (e.g. Random Number Guessing Game)
+See scripting_examples folder for Bash script examples. E.g.
+* Random Number Guessing Game
+* Multiplication table
+* Argument reverser function
