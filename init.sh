@@ -54,6 +54,7 @@ sed -i 's/e[cn]/E/g' $newest_file_path
 # File for split_testing_folder
 split_testing_folder=split_testing_folder
 for i in {1..30250}; do
+    # % does a modulus division. E.g. 13 % 2 = 1
     echo $(( ( RANDOM % 10 )  + 1 )) >> $split_testing_folder/1.txt
     echo $(( ( RANDOM % 100 )  + 1 )) >> $split_testing_folder/2.txt
     echo $(( ( RANDOM % 20 )  + 1 )) >> $split_testing_folder/3.txt

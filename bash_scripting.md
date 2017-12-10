@@ -29,18 +29,22 @@ $ bash hello_world.sh
 
 ## Variable Assignment and Use
 
+Use lower-case letters for naming your variables. Variable names written in capital letters are meant for system variables.
+
 ```bash
 #!/usr/bin/env bash
 a=1
 b=2
-echo a is $a and b is $b
-echo $a \+ $b \= $[ $a + $b ]
+echo a is $a and b is $b        # output: 'a is 1 and b is 2'
+echo $a \+ $b \= $[ $a + $b ]   # output: '1 + 2 = 3'
 ```
 
 ## Conditionals
+
 Here is a list of logical operators for comparing integers and strings: [use of logical operators](http://tldp.org/LDP/abs/html/comparison-ops.html) 
 
 ```bash
+#!/usr/bin/env bash
 a=1
 if [ $a -eq 1 ]; then
     echo a is equal to 1
@@ -55,9 +59,37 @@ fi
 
 ### For Loop
 
-Example which produces a multiplication table
+* Bash doesn't require indenting what's inside the loop, but it aids readability.
+* Semicolon is the same as a newline. Therefore you could also drop the semicolon and move the do to the next line.
+
+Examples:
+```bash
+#!/usr/bin/env bash
+for i in 1 2 3; do
+    echo $i
+done
+```
 
 ```bash
+#!/usr/bin/env bash
+for i in seq{1..5}; do
+    echo $i
+done
+```
+
+```bash
+#!/usr/bin/env bash
+size=10
+# for ((initial i ; loop until condition ; after each loop, increase the value of i)); do
+for ((i=1 ; i<=$size ; i++)); do
+    echo $i
+done
+```
+
+
+Example which produces a multiplication table:
+```bash
+#!/usr/bin/env bash
 for i in {1..10}; do
     for j in 1 2 3 4 5 6 7 8 9 10
     do
@@ -70,6 +102,7 @@ done
 ### While Loop
 
 ```bash
+#!/usr/bin/env bash
 i=1
 while [ $i -lt 6 ]; do
     echo $i
@@ -77,34 +110,6 @@ while [ $i -lt 6 ]; do
 done
 ```
 
-### Random Number Guessing Game
-```bash
-#!/bin/bash
-min=1
-max=100
-# Generate a random number between min and max.
-target=$(( ( RANDOM % $max )  + $min ))
-min=$[ $min - 1 ]
-max=$[ $max + 1 ]
-guesses_made=0
-guess=-1
+## Example Bash Scripts
 
-while [ $guess -ne $target ]; do
-    echo ==x==x==x== ==x==x==x== ==x==x==x==
-    if [[ $guesses_made -ne 0 && $guess -ge $min && $guess -le $max ]]; then
-        if [ $target -lt $guess ]; then
-            max=$guess
-        elif [ $target -gt $guess ]; then
-            min=$guess
-        fi
-    fi
-    echo $min \< Target number \< $max
-    read -p 'Please enter your guess: ' guess
-    guesses_made=$[ $guesses_made + 1 ]
-    echo Number of guesses made: $guesses_made
-    echo
-done
-echo
-echo Your guess is correct. Target number $target is equal to your guess $guess.
-echo Congratulations, you guessed the target number with $guesses_made guesses.
-```
+See scripting_examples folder for Bash script examples (e.g. Random Number Guessing Game)

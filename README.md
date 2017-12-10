@@ -11,6 +11,7 @@ Remarks:
 * Dollar sign indicates a command line. When testing out examples, enter everything after the dollar sign.
 * Everything after bars (#) is a comment and doesn't influence the command.
 * Commands have options to expand their functionality. See them by typing a command name followed by '--help'.
+* Run the *init.sh* script to create files and folders to test out the commands in these notes. 
 
 Mainly based on:
 * System's manual (man) pages
@@ -55,7 +56,7 @@ $ ls --help
 * [tldr-bash-client](https://github.com/pepa65/tldr-bash-client "TLDR Bash client")
 
 ### www
-Just search for it online.
+Search for it online.
 
 ## First Orientation
 
