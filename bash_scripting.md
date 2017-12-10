@@ -27,6 +27,20 @@ Type *bash* followed by your script name (*hello_world.sh*)
 $ bash hello_world.sh
 ```
 
+### General Form of a Bash Command
+[variable_assignment] **command** [flags] [arguments]
+
+```bash
+# Execute a command without arguments
+$ ls
+# Execute a command with an argument (/bin) - show files in /bin directory
+$ ls /bin
+# Execute a command with flags (-lht) and an argument (/bin) - list files as a list (-l), show human readable sizes (-h), order by modification time (-t)
+$ ls -lht /bin
+# Execute a command with specified environmen variables
+$ size=5 multiplication_table.sh
+```
+
 ## Variable Assignment and Use
 
 Use lower-case letters for naming your variables. Variable names written in capital letters are meant for system variables.
