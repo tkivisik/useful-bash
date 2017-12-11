@@ -7,7 +7,7 @@
 When you save the following code as hello_world.sh
 ```bash
 #!/usr/bin/env bash
-echo Hello World!
+echo "Hello World!"
 ```
 
 ### Shebang
@@ -17,14 +17,14 @@ Often people also use an absolute path to bash, but that is discouraged due to t
 
 ```bash
 #!/bin/bash
-echo Hello World!
+echo "Hello World!"
 ```
 
 ### Running a Bash Script
 Type *bash* followed by your script name (*hello_world.sh*)
 
 ```bash
-$ bash hello_world.sh
+$ bash "hello_world.sh"
 ```
 
 ### General Form of a Bash Command
@@ -49,9 +49,26 @@ Use lower-case letters for naming your variables. Variable names written in capi
 #!/usr/bin/env bash
 a=1
 b=2
-echo a is $a and b is $b        # output: 'a is 1 and b is 2'
-echo $a \+ $b \= $[ $a + $b ]   # output: '1 + 2 = 3'
+echo "a is $a and b is $b"        # output: 'a is 1 and b is 2'
+echo "$a + $b = $[ $a + $b ]"   # output: '1 + 2 = 3'
 ```
+
+## Apostrophes and Quotes
+
+It's better to form a habit of using apostrophes and quotes. They rarely break something, but often save from errors or mistakes. Text inside apostrophes will remain literal even with variables in it. Variables inside quotes will be expanded.
+
+```bash
+#!/usr/bin/env bash
+literally='will not be expanded'
+non_literally='so that variables are expanded'
+
+$ echo 'This will be printed $literally'
+# output: This will be printed $literally
+
+$ echo "This will be written $non_literally"
+# output: This will be printed so that variables are expanded
+```
+
 
 ## Conditionals
 
