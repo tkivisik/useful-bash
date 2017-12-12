@@ -1,4 +1,8 @@
 # Bash Scripting
+Curator: Taavi Kivisik
+
+Mainly based on:
+* [The Bash Guide](http://guide.bash.academy/ "The Bash Guide") - highly recommended.
 
 ## Absolute Basics
 
@@ -72,6 +76,8 @@ $ echo "This will be written $non_literally"
 
 ## Conditionals
 
+### If Statement
+
 Here is a list of logical operators for comparing integers and strings: [use of logical operators](http://tldp.org/LDP/abs/html/comparison-ops.html) 
 
 ```bash
@@ -84,6 +90,26 @@ elif [ $a -lt 1 ]; then
 else
     echo a is greater than 1
 fi
+```
+
+When a command is finished successfully, it returns the exit code 0. Unsuccessful termination of a program returns another number, which is associated with an error type.
+
+### [[ and (( commands
+
+[[ and (( are commands which take a list of arguments as input, where the last argument must be ]] or )) respectively. If whatever is between [[ and ]] evaluates to true, then the first part after && is run, otherwise the second.
+
+```bash
+#!/usr/bin/env bash
+a=1
+b=2
+c=1
+echo "a = $a, b = $b, c = $c"
+[[ $a = $b ]] && echo "a is equal to b" || echo "a is not equal to b"
+# output: a is not equal to b
+[[ $a = $c ]] && echo "a is equal to c" || echo "a is not equal to c"
+# output: a is equal to c
+[[ $b = $c ]] && echo "b is equal to c" || echo "b is not equal to c"
+# output: b is not equal to c
 ```
 
 ## Looping
