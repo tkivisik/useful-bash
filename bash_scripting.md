@@ -84,11 +84,11 @@ Here is a list of logical operators for comparing integers and strings: [use of 
 #!/usr/bin/env bash
 a=1
 if [ $a -eq 1 ]; then
-    echo a is equal to 1
+    echo "a is equal to 1"
 elif [ $a -lt 1 ]; then
-    echo a is less than 1
+    echo "a is less than 1"
 else
-    echo a is greater than 1
+    echo "a is greater than 1"
 fi
 ```
 
@@ -123,14 +123,14 @@ Examples:
 ```bash
 #!/usr/bin/env bash
 for i in 1 2 3; do
-    echo $i
+    echo "$i"
 done
 ```
 
 ```bash
 #!/usr/bin/env bash
 for i in seq{1..5}; do
-    echo $i
+    echo "$i"
 done
 ```
 
@@ -139,7 +139,7 @@ done
 size=10
 # for ((initial i ; loop until condition ; after each loop, increase the value of i)); do
 for ((i=1 ; i<=$size ; i++)); do
-    echo $i
+    echo "$i"
 done
 ```
 
@@ -162,7 +162,7 @@ done
 #!/usr/bin/env bash
 i=1
 while [ $i -lt 6 ]; do
-    echo $i
+    echo "$i"
     i=$[ $i + 1 ]
 done
 ```
@@ -175,14 +175,14 @@ done
 ```bash
 #!/usr/bin/env bash
 argument_counter () {
-    echo Function argument count: $# 
-    echo Function arguments: $@
+    echo "Function argument count: $#"
+    echo "Function arguments: $@"
     echo "Function's First argument was: $1"
 }
 
-echo Script is the argument number 0: $0
-echo Program argument count: $# 
-echo Program arguments : $@
+echo "Script is the argument number 0: $0"
+echo "Program argument count: $#" 
+echo "Program arguments : $@"
 # Pass all program arguments to the function, and add the first,
 # second and first again argument once again.
 argument_counter $@ $1 $2 $1
