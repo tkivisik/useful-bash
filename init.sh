@@ -7,12 +7,16 @@ echo "Hannah" > "$name_file_path"
 echo "Joe" >> "$name_file_path"
 echo "Maria" >> "$name_file_path"
 echo "Sebastian" >> "$name_file_path"
+echo "Kristine" >> "$name_file_path"
+echo "Jean" >> "$name_file_path"
 
 age_file_path=paste_testing_folder/ages.txt
 echo "21" > "$age_file_path"
 echo "22" >> "$age_file_path"
 echo "20" >> "$age_file_path"
 echo "23" >> "$age_file_path"
+echo "30" >> "$age_file_path"
+echo "33" >> "$age_file_path"
 
 # Files for cut_testing_folder
 cut_file_path=cut_testing_folder/cut_the_third_column.txt
