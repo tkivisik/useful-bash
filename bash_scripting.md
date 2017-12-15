@@ -101,7 +101,59 @@ fi
 
 When a command is finished successfully, it returns the exit code 0. Unsuccessful termination of a program returns another number, which is associated with an error type.
 
-### [[ and (( commands
+### Parentheses, Brackets, Braces
+
+* **Parentheses** '( )'
+    * start a subshell. Current shell's environment is passed on to the child shell.
+    * are used to build an array.
+* **Double Parentheses** '(( ))' are used for integer arithmetic.
+* **Brackets** '[' are a builtin test command.
+* **Double Brackets** '[[' are an extension builtin for brackets. It allows for more readable code.
+* **Braces** '{ }' are used for
+    * grouping commands together in a current shell (need to end with a semicolon).
+    * variable substitution
+    * brace expansion (e.g. {1..5..2} and {a..j})
+
+```bash
+# Execute commands in a subshell
+$ echo parent shell $( echo child shell )
+parent shell child shell
+
+# Array initialization
+$ array=(1 2 3 4 5)
+$ echo "${array[0]}     # Prints the first element
+1
+```
+
+```bash
+$ echo "$(( 1 + 1 ))"
+2
+```
+
+```bash
+$ if [ "1" -lt "2" ] ; then echo 'One is truly less than two' ; fi
+One is truly less than two
+```
+
+```bash
+$ if [[ "1" < "2" ]] ; then echo 'Double brackets allow for the use of the less than symbol' ; fi
+Double brackets allow for the use of the less than symbol
+```
+
+```bash
+# Group commands together in a current shell
+$ { echo this ; echo and ; echo that ; }
+this
+and
+that
+$ a='great'
+$ echo "${a}est"    # without braces, it would look for 'aest' variable
+greatest
+$ echo {1..10..3} # print every third element starting from 1 until 10
+1 4 7 10
+$ echo {a..j..2} # print every other character from a to j
+a c e g i
+```
 
 [[ and (( are commands which take a list of arguments as input, where the last argument must be ]] or )) respectively. If whatever is between [[ and ]] evaluates to true, then the first part after && is run, otherwise the second.
 
@@ -194,6 +246,15 @@ echo "Program arguments : $@"
 # Pass all program arguments to the function, and add the first,
 # second and first again argument once again.
 argument_counter $@ $1 $2 $1
+```
+
+## Subshells
+
+It's possible to run a command in a command in a command by using parentheses. 
+
+```bash
+#!/usr/bin/env bash
+
 ```
 
 ## Example Bash Scripts
