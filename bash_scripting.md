@@ -47,6 +47,7 @@ $ size=5 multiplication_table.sh
 
 ## Variable Assignment and Use
 
+Variable assignment is done so you type the variable name followed by an equal sign followed by the value. There must not be space between the variable name and other parts, otherwise Bash considers it a command with arguments. You can use a variable by typing a dollar sign ($) immediately before the variable name.  
 Use lower-case letters for naming your variables. Variable names written in capital letters are meant for system variables.
 
 ```bash
@@ -56,6 +57,12 @@ b=2
 echo "a is $a and b is $b"        # output: 'a is 1 and b is 2'
 echo "$a + $b = $[ $a + $b ]"   # output: '1 + 2 = 3'
 ```
+
+Some special variables:
+
+* **$$** - process id of a current script
+* **$USER** - user running this script
+* **$HOSTNAME** - hostname of the machine 
 
 ## Apostrophes and Quotes
 
@@ -171,6 +178,7 @@ done
 
 * **$#** - represents the number of arguments passed to the program (outside of a function) or to the function (inside of a function).
 * **$@** - represents the arguments passed to the program (outside of a function) or to the function (inside of a function).
+* **$?** - exit status of a most recently ran process.
 
 ```bash
 #!/usr/bin/env bash
