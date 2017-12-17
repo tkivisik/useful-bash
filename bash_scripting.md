@@ -116,8 +116,9 @@ When a command is finished successfully, it returns the exit code 0. Unsuccessfu
 
 ```bash
 # Execute commands in a subshell
-$ echo parent shell $( echo child shell )
-parent shell child shell
+$ parent_time=$( date +%H:%M:%S )
+$ echo Parent shell: $parent_time and child shell: $( sleep 1 ; date +%H:%M:%S ; echo Child shell prints this )
+Parent shell: 17:15:08 and child shell: 17:15:09 Child shell prints this
 
 # Array initialization
 $ array=(1 2 3 4 5)
@@ -133,6 +134,7 @@ $ echo "$(( 1 + 1 ))"
 ```bash
 $ if [ "1" -lt "2" ] ; then echo 'One is truly less than two' ; fi
 One is truly less than two
+$ if [ -d "directory_name" ] ; then echo 'That directory exists' ; fi
 ```
 
 ```bash
@@ -246,15 +248,6 @@ echo "Program arguments : $@"
 # Pass all program arguments to the function, and add the first,
 # second and first again argument once again.
 argument_counter $@ $1 $2 $1
-```
-
-## Subshells
-
-It's possible to run a command in a command in a command by using parentheses. 
-
-```bash
-#!/usr/bin/env bash
-
 ```
 
 ## Example Bash Scripts
