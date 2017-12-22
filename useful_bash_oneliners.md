@@ -189,8 +189,14 @@ Prints the bottom 10 rows of a file to standard out (terminal by default).
 
 Examples:  
 ```bash
-$ tail notes.txt  
-$ tail -n 100 notes.txt     # Prints the bottom 100 lines of a file
+$ tail notes.txt
+
+# Prints the bottom 100 lines of a file
+$ tail -n 100 notes.txt     
+
+# Follows the changes of a file. Especially useful when looking into log
+# files and waiting for a certain process to start or finish.
+$ tail -f log_file.log
 ```
 
 ### less
