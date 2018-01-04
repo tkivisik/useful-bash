@@ -4,6 +4,13 @@ Curator: Taavi Kivisik
 ## Monitoring the System
 
 ### top
+top displays processor activity and active tasks of the system.
+
+Example:  
+```bash
+$ top
+```
+
 ### w
 ### free
 ### du
@@ -25,3 +32,9 @@ Example:
 # Find all files ending with .txt recursively in a folder called Documents
 $ find Documents -iname "*.txt"
 ```
+
+## Drives and Devices
+### fdisk
+
+
+
