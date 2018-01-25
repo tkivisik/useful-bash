@@ -29,8 +29,23 @@ $ sudo updatedb
 
 Example:  
 ```bash
-# Find all files ending with .txt recursively in a folder called Documents
-$ find Documents -iname "*.txt"
+# Find all files and folders from the current folder and all of its subfolders
+$ find .
+
+# Find all files and folders ending with .txt recursively in a folder called
+#           Documents of the current user.
+$ find ~/Documents -iname "*.txt"
+
+# Find all files and folders inside the specified folder
+# CAUTION - adding '-delete' to the end will delete all those files
+#         - when using '-delete' keep it at the end, otherwise the command
+#           will delete first and only then check for other conditions.
+$ find /home/someone/tmp_folder/* #-delete
+
+# Find all files (-type f) in the current directory and one subfolder
+#           down (-maxdepth 2)          
+$ find . -type f -maxdepth 2
+
 ```
 
 ## Drives and Devices
