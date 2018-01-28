@@ -12,9 +12,42 @@ $ top
 ```
 
 ### w
+w displays who is logged on and what they are doing.  
+
+Example:  
+```bash
+$ w
+ 22:55:47 up  3:41,  1 user,  load average: 0,13, 0,31, 0,65
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+johndoe  tty8     :0               19:14    3:41m  6:38   0.82s cinnamon-session --session cinnamon
+```
+
+**Meaning:**
+* current time
+* uptime (3h 41m)
+* 1 user logged on
+* system load average in the last 1, 5, and 15 minutes
+
 ### free
+
 ### du
+du stands for disk usage and it estimates file space usage of a given directory.
+
+```bash
+$ du
+$ du -h     # -h or --human-readable prints sizes in powers of 1024 (e.g. 1023M)
+$ du ~/Documents
+```
+
 ### df
+df stands for disk free. It's similar to du and reports the file system disk usage.
+
+Example:  
+```bash
+$ df
+$ df -h     # -h or --human-readable prints sizes in powers of 1024 (e.g. 1023M)
+$ df -H     # -H or --si prints sizes in powers of 1000 (e.g. 1.1G)
+```
 
 ## Finding Files
 
