@@ -29,10 +29,20 @@ johndoe  tty8     :0               19:14    3:41m  6:38   0.82s cinnamon-session
 * system load average in the last 1, 5, and 15 minutes
 
 ### free
+free displays the amount of free and used memory in the system - physical and swap memory, buffers and caches used by the kernel.
+
+Example:
+```bash
+$ free -h
+              total        used        free      shared  buff/cache   available
+Mem:            11G        6,2G        530M        765M        5,0G        4,2G
+Swap:            0B          0B          0B
+```
 
 ### du
 du stands for disk usage and it estimates file space usage of a given directory.
 
+Examples:
 ```bash
 $ du
 $ du -h     # -h or --human-readable prints sizes in powers of 1024 (e.g. 1023M)
@@ -42,7 +52,7 @@ $ du ~/Documents
 ### df
 df stands for disk free. It's similar to du and reports the file system disk usage.
 
-Example:  
+Examples:  
 ```bash
 $ df
 $ df -h     # -h or --human-readable prints sizes in powers of 1024 (e.g. 1023M)
@@ -52,7 +62,8 @@ $ df -H     # -H or --si prints sizes in powers of 1000 (e.g. 1.1G)
 ## Finding Files
 
 ### locate
-Example:  
+
+Examples:  
 ```bash
 $ locate "somefile.txt"
 $ sudo updatedb
@@ -60,7 +71,7 @@ $ sudo updatedb
 
 ### find
 
-Example:  
+Examples:  
 ```bash
 # Find all files and folders from the current folder and all of its subfolders
 $ find .
