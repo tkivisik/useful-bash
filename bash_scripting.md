@@ -60,13 +60,16 @@ echo "$a + $b = $[ $a + $b ]"   # output: '1 + 2 = 3'
 
 Some special variables:
 
-* **$$** - process id of a current script
+* **$$** - process id (PID) of a current script
+* **$!** - PID of a last run script
 * **$USER** - user running this script
 * **$HOSTNAME** - hostname of the machine 
 
 ## Apostrophes and Quotes
 
-It's better to form a habit of using apostrophes and quotes. They rarely break something, but often save from errors or mistakes. Text inside apostrophes will remain literal even with variables in it. Variables inside quotes will be expanded.
+### Meaningful Difference between Apostrophes and Quotes
+
+It's better to form a habit of using apostrophes and quotes. They rarely break something, but often save from errors or mistakes. Text inside apostrophes (i.e. single quotes (')) will remain literal even with variables in it. Variables inside quotes (i.e. double quotes (")) will be expanded.
 
 ```bash
 #!/usr/bin/env bash
@@ -78,8 +81,58 @@ $ echo 'This will be printed $literally'
 
 $ echo "This will be written $non_literally"
 # output: This will be printed so that variables are expanded
+```  
+
+### Using Both the Apostrophes and Quotes
+
+Sometimes there is a need to use them both at the same time.
+
+```bash
+#!/usr/bin/env bash
+
+a=1
+$ echo '$a'
+# output: $a
+$ echo "$a"
+# output: 1
+
+$ echo '$a"$a"'     # Outermost single quotes set the stage for being interpreted literally
+# output: $a"$a"
+$ echo "$a'$a'"     # Outermost double quotes set the stage for expansion
+# output: 1'1'
 ```
 
+### Escaping Apostrophes and Quotes
+
+
+There are two ways to escape apostrophes and quotes (Also see this [Thread in Stack Overflow](https://stackoverflow.com/questions/1250079/how-to-escape-single-quotes-within-single-quoted-strings "How to Escape Single Quote sWithin Single Quoted Strings")):  
+
+* Method 1: echo 'It'\'s an amazing quote'
+* Method 2: echo 'It'"'"s an amazing quote'  
+
+They both work by first ending the engoing quote environment followed by an escaped quote, followed by a continuation of the quote environment. Method one does it by escaping the quote using a backslash. Method two does it by escaping the quote using double quotes.
+
+```bash
+#!/usr/bin/env bash
+
+a=1
+$ echo 'I like {$a}s'
+# output: I like {$a}s
+$ echo "I like $a's"
+# output: I like 1's
+
+# Examples of the first escape method
+$ echo 'I like both $a'\''s and the "$a"'
+# output: I like both $a's and the "$a"
+$ echo "I like both $a's and the "\""$a"\"
+# output: I like both 1's and the "1"
+
+# Examples of the second escape method
+$ echo 'I like both $a'"'"'s and the "$a"'
+# output: I like both $a's and the "$a"
+$ echo "I like both $a's and the "'"'"$a"'"'", which is nice"
+# output: I like both 1's and the "1", which is nice
+```
 
 ## Conditionals
 
