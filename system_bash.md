@@ -63,10 +63,12 @@ $ df -H     # -H or --si prints sizes in powers of 1000 (e.g. 1.1G)
 
 ### locate
 
+locate allows a quick search of files from a system. It uses a system database of files usually updated once a day automatically. Manual update is done using the 'updatedb' command. 
+
 Examples:  
 ```bash
 $ locate "somefile.txt"
-$ sudo updatedb
+$ sudo updatedb     # Update the system database of files
 ```
 
 ### find
@@ -93,7 +95,6 @@ $ find . -type f -maxdepth 2
 ```
 
 ## Drives and Devices
+
 ### fdisk
-
-
-
+fdisk allows to display and manipulate the disk partition table.
