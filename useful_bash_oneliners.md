@@ -292,7 +292,10 @@ Example:
 ```bash  
 $ wc folder/* &             # This command is run in the background
 $ jobs                      # View all background jobs  
+$ $!                        # View the process ID (PID) of a last started job
 ```
+
+* [Wait for Background Processes](scripting_examples/waiting_after_background_processes.sh) - Script example of starting several background processes and waiting for a group of them to finish before starting a next group of processes.
 
 ## Manipulating Files
 
