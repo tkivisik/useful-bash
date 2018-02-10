@@ -11,6 +11,17 @@ Example:
 $ top
 ```
 
+### pgrep
+pgrep is short for process grep, of which grep is short for general regular expression print. pgrep looks up or signals a process based on name or attributes.
+
+```bash
+# Show all processes IDs (PIDs) which have python in their attributes
+$ pgrep python  
+
+# Show all processes IDs (PIDs) of a user (-u) called 'root'
+$ pgrep -u root  
+```
+
 ### w
 w displays who is logged on and what they are doing.  
 

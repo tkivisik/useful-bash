@@ -214,8 +214,16 @@ Examples:
 ```bash
 $ cat notes.txt  
 $ cat notes.txt examples.txt  
-$ cat notes.txt examples.txt > two_files_together.txt   # Writes the output to a file called two_files_together.txt
-$ cat > notes.txt     # writes everything you write to notes.txt until CTRL+C is pressed  
+```  
+
+Writes the output to a file called two_files_together.txt
+```bash
+$ cat notes.txt examples.txt > two_files_together.txt
+```  
+
+Writes everything you write to notes.txt until CTRL+C is pressed  
+```bash
+$ cat > notes.txt
 ```
 
 ### tac
@@ -262,10 +270,19 @@ $ cat >> notes.txt     # appends everything you write to notes.txt until CTRL+C 
 | is a piping operator in Bash. Output from the command on the left is given as input to the command on the right.
 
 Examples:  
+From notes.txt find lines with 'ls', then find lines with 'short' in them from those lines, write the result to a file
 ```bash
-# From notes.txt find lines with 'ls', then find lines with 'short' in them from those lines, write the result to a file
 $ grep ls notes.txt | grep short > lines_with_ls_and_short_in_them.txt  
-$ ls -lh | grep .txt    # print access data, human readable sizes and names of txt files  
+```  
+
+Print access data, human readable sizes and names of txt files  
+```bash
+$ ls -lh | grep .txt
+```  
+
+Look recursively for a *'search phrase'* inside all files in the current directory.
+```bash
+$ grep -r 'search phrase' .
 ```
 
 ### <
@@ -277,7 +294,7 @@ $ cat > calculations.txt
 1+1  
 2+2  
 3+3  
-<CTRL+C>                # Finish writing to calculations.txt by pressing CTRL+C  
+<CTRL+C>    # Finish writing to calculations.txt by pressing CTRL+C  
 $ bc < calculations.txt  
 2  
 4  
@@ -356,8 +373,10 @@ sed is short for stream editor. It is often used for replacing elements in a fil
 
 You can use it for replacing patterns as follows:
 ```bash  
-sed s/pattern/replacement/ source_file.txt       # Replaces the first ocurrance of a pattern with a replacement in every line.
-sed s/pattern/replacement/g source_file.txt     # Replaces all occurrances of a pattern with a replacement.  
+# Replaces the first ocurrance of a pattern with a replacement in every line.
+sed s/pattern/replacement/ source_file.txt      
+# Replaces all occurrances of a pattern with a replacement. 
+sed s/pattern/replacement/g source_file.txt       
 ```
 
 Examples:  
@@ -366,14 +385,22 @@ $ cat > source_text.txt
 abcabc  
 cbacba  
 <CTRL+C>  
-$ sed s/a/A/ source_text.txt       # Replaces the first ocurrance of a with A in every line.  
+
+# Replaces the first ocurrance of a with A in every line. 
+$ sed s/a/A/ source_text.txt   
 Abcabc  
 cbAcba  
-$ sed s/a/A/g source_text.txt      # Prints the output with a replaced with A  
+
+# Print the output with a replaced with A
+$ sed s/a/A/g source_text.txt    
 AbcAbc  
 cbAcbA  
-$ sed -i s/a/A/g source_text.txt   # Replaces a with A in the source file itself.  
-$ sed s/a/A/g source_text.txt > new.txt    # Writes the replaced version of the file to new.txt, keeps the original file as was.  
+
+# Replace a with A in the source file itself.  
+$ sed -i s/a/A/g source_text.txt   
+
+# Write the replaced version of the file to new.txt, keeps the original file as was.
+$ sed s/a/A/g source_text.txt > new.txt      
 ```
 
 ### tr
