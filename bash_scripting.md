@@ -204,9 +204,13 @@ that
 $ a='great'
 $ echo "${a}est"    # without braces, it would look for 'aest' variable
 greatest
-$ echo {1..10..3} # print every third element starting from 1 until 10
+
+# print every third element starting from 1 until 10
+$ echo {1..10..3} 
 1 4 7 10
-$ echo {a..j..2} # print every other character from a to j
+
+# print every other character from a to j
+$ echo {a..j..2}
 a c e g i
 ```
 

@@ -12,6 +12,7 @@ echo "Jean" >> "$name_file_path"
 
 age_file_path=playground/paste_testing_folder/ages.txt
 echo "21" > "$age_file_path"
+#TODO - Write into an array of ages.
 echo "22" >> "$age_file_path"
 echo "20" >> "$age_file_path"
 echo "23" >> "$age_file_path"

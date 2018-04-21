@@ -10,3 +10,11 @@ This repository is for promoting quickly useful Bash. It started from a need to 
 * [Useful Bash for the System](system_bash.md) - Basic Bash for beginners for working with the system.
 * [Bash Scripting](bash_scripting.md) - Introduction to scripting in Bash and explains some of the basics of the language. What's the difference between a single quote and a double quote etc.
 * [Scripting Examples](scripting_examples) - Basic examples of Bash scripts.
+
+## Reading .md Files
+
+Files with an 'md' extension are regular plain text files following a predefined structure. You can read them
+
+* locally as is when opening them with any text editor (e.g. Notepad)
+* locally in a nicely formatted way by opening them with an viewer/editor capable of interpreting Markdown (Google for Markdown viewer *\<your operating system name\>*)
+* online in a nicely formatted way at [https://github.com/tkivisik/useful-bash](https://github.com/tkivisik/useful-bash)

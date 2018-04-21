@@ -149,8 +149,12 @@ Examples:
 ```bash
 $ rm text_file.txt  
 $ rm /home/user/text_file.txt  
-$ rm /home/user/pointless_folder/*    # Remove all files in the pointless_folder, leave the folder.  
-$ rm -r /home/user/pointless_folder   # Recursively remove the folder and its contents  
+
+# Remove all files in the pointless_folder, leave the folder.  
+$ rm /home/user/pointless_folder/*    
+
+# Recursively remove the folder and its contents  
+$ rm -r /home/user/pointless_folder   
 ```
 
 ### cp
@@ -158,9 +162,14 @@ cp is short for copy. Copies a file, directory or files and directories.
 
 Examples:  
 ```bash
-$ cp source_file.txt source_file_copy_name.txt              # Copies to the current directory
-$ cp source_file.txt some/other/folder/source_file.txt      # Copies to another folder  
-$ cp /home/user/files/*.txt /home/user/copied_text_files/   # Copies only all .txt files to a new location
+# Copies to the current directory
+$ cp source_file.txt source_file_copy_name.txt
+
+# Copies to another folder  
+$ cp source_file.txt some/other/folder/source_file.txt
+
+# Copies only all .txt files to a new location
+$ cp /home/user/files/*.txt /home/user/copied_text_files/
 ```
 
 ### mv
@@ -170,7 +179,9 @@ Examples:
 ```bash
 $ mv source_file.txt source_file_renamed.txt  
 $ mv source_file.txt some/other/folder/source_file.txt  
-$ mv /home/user/files/*.txt /home/user/copied_text_files/   # Moves only all .txt files to a new location
+
+# Moves only all .txt files to a new location
+$ mv /home/user/files/*.txt /home/user/copied_text_files/
 ```
 
 ## Getting an Impression of Files
@@ -299,7 +310,8 @@ $ bc < calculations.txt
 2  
 4  
 6  
-$ bc < calculations.txt > results.txt   # Same as previous, but writes the results to a file
+# Same as previous, but writes the results to a file
+$ bc < calculations.txt > results.txt
 ```
 
 ### &
@@ -338,8 +350,11 @@ Print selected part(s) of lines from each file to standard output. Think of it a
 
 Examples:  
 ```bash  
-$ cut -d ',' -f 1 table.csv   # prints the first column of a comma separated file  
-$ cut -d ';' -f 2-3 table.csv # prints the second and third column of a semicolon separated file  
+# prints the first column of a comma separated file  
+$ cut -d ',' -f 1 table.csv
+
+# prints the second and third column of a semicolon separated file  
+$ cut -d ';' -f 2-3 table.csv
 ```
 
 ### paste
@@ -412,16 +427,24 @@ $ cat > text.txt
 abcabc  
 cbacba  
 <CTRL+C>  
-$ cat text.txt | tr a A         # a is mapped to A
+
+# a is mapped to A
+$ cat text.txt | tr a A         
 AbcAbc  
 cbAcbA  
-$ cat text.txt | tr a-z A-Z     # lower case letters are mapped to upper case letters
+
+# lower case letters are mapped to upper case letters
+$ cat text.txt | tr a-z A-Z
 ABCABC  
 CBACBA  
-$ cat text.txt | tr ab ,        # elements in the first set [ab] are mapped to the second set [,]
+
+# elements in the first set [ab] are mapped to the second set [,]
+$ cat text.txt | tr ab ,
 ,,c,,c  
 c,,c,,  
-$ cat text.txt | tr ab ,  | tr -s ,     # -s squeezes duplicate commas to have one comma.
+
+# -s squeezes duplicate commas to have one comma.
+$ cat text.txt | tr ab ,  | tr -s ,
 ,c,c  
 c,c,  
 ```
