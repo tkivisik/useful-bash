@@ -85,13 +85,23 @@ $ history
 $ history | grep *.txt  
 ```
 
+When you don't want a line to end up in the history, use a space in front of the command. Assume that '$ ' is not part of the command.
+
+Examples:  
+
+```bash
+$ echo 'This line ends up in the history'
+$ _echo 'Lines starting with a space, represented here with an underscore, do not end up in the history'
+```
+
 ### ls
 ls is short for list. Displays the list of files and directories in the working directory.
 
-Examples:  
+Examples:
+
 ```bash
 $ ls  
-$ ls *.txt  
+$ ls *.txt
 ```
 
 ### env
@@ -100,7 +110,7 @@ env is short for environment. Displays the environmental variables.
 ### echo
 Prints all what comes after it to standard out (terminal by default).
 
-Examples:  
+Examples:
 ```bash
 $ echo Print this on the screen  
 $ echo Current terminal user is $(whoami)  
@@ -112,7 +122,7 @@ $ echo Write all this into a file > text.txt
 ### cd
 cd is short for change directory. Changes the working directory.
 
-Examples:  
+Examples:
 ```bash
 $ cd folder_name      # e.g. from /home/user to /home/user/folder_name  
 $ cd ..               # e.g. from /home/user to /home  
@@ -161,6 +171,7 @@ $ rm -r /home/user/pointless_folder
 cp is short for copy. Copies a file, directory or files and directories.
 
 Examples:  
+
 ```bash
 # Copies to the current directory
 $ cp source_file.txt source_file_copy_name.txt
@@ -176,6 +187,7 @@ $ cp /home/user/files/*.txt /home/user/copied_text_files/
 mv is short for move. Moves (same as renaming) a file.
 
 Examples:  
+
 ```bash
 $ mv source_file.txt source_file_renamed.txt  
 $ mv source_file.txt some/other/folder/source_file.txt  
@@ -190,6 +202,7 @@ $ mv /home/user/files/*.txt /home/user/copied_text_files/
 Prints the top 10 rows of a file to standard out (terminal by default).
 
 Examples:  
+
 ```bash
 $ head notes.txt  
 $ head -n 100 notes.txt     # Prints the top 100 lines of a file
@@ -199,6 +212,7 @@ $ head -n 100 notes.txt     # Prints the top 100 lines of a file
 Prints the bottom 10 rows of a file to standard out (terminal by default).
 
 Examples:  
+
 ```bash
 $ tail notes.txt
 
@@ -214,6 +228,7 @@ $ tail -f log_file.log
 Displays the file while allowing navigating in it.
 
 Example:  
+
 ```bash
 $ less notes.txt      # 'j' to move down, 'k' to move up, 'q' to quit.  
 ```
