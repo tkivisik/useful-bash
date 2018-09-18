@@ -307,6 +307,28 @@ echo "Program arguments : $@"
 argument_counter $@ $1 $2 $1
 ```
 
+## Other Useful Expressions
+
+### <<
+
+It's called the 'here-document' structure and can be used to create a multiline document on the go.
+
+```bash
+#!/usr/bin/env bash
+
+# Creates a file named 'output_file.txt' with a content of anything between a specified end pattern (i.e. EOF in the following case)
+cat > output_file.txt << EOF
+first line
+second line
+EOF
+
+# Counts the lines, words, characters of the input provided by the here-document structure.
+wc << ABC
+first line
+second line
+ABC
+```
+
 ## Example Bash Scripts
 
 See scripting_examples folder for Bash script examples. E.g.
