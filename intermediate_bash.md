@@ -43,3 +43,28 @@ ss -tl
 # show listening sockets without guessing the use of the socket
 ss -tln
 ```
+
+## Other Helpful Bits
+
+### !$
+
+`!$` brings back the last argument of the previous command.
+
+```bash
+# echo prints all arguments (separated by space)
+$ echo 1 2 3
+1 2 3
+$ echo !$
+3
+
+# even though space separates arguments, it's still inserted
+$ echo 1 "2 3"
+1 2 3
+$ echo !$
+2 3
+
+$ echo 1 2 3"4 5"
+1 2 34 5
+$ echo !$
+34 5
+```
