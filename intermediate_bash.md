@@ -52,19 +52,13 @@ ss -tln
 
 ```bash
 # echo prints all arguments (separated by space)
-$ echo 1 2 3
-1 2 3
-$ echo !$
-3
+echo 1 2 3  # output: 1 2 3
+echo !$     # output: 3
 
 # even though space separates arguments, it's still inserted
-$ echo 1 "2 3"
-1 2 3
-$ echo !$
-2 3
+echo 1 "2 3"    # output: 1 2 3
+echo !$         # output: 2 3
 
-$ echo 1 2 3"4 5"
-1 2 34 5
-$ echo !$
-34 5
+echo 1 2 3"4 5" # output: 1 2 34 5
+echo !$         # output: 34 5
 ```
