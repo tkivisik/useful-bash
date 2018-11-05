@@ -44,6 +44,47 @@ ss -tl
 ss -tln
 ```
 
+## Security Bits
+
+### SUID & SGID [EXAMPLE NOT WORKING]
+
+Set user identification (SUID)  allow a user to run a program as some
+other user (like root).
+
+```bash
+# creating folders there is only allowed by the root user
+mkdir '/srv/newfolder'
+
+mkdir 'removabletestfolder'
+cd 'removabletestfolder'
+
+# create a program which does it
+cat << EOF > 'mytestprogram.sh'
+mkdir '/srv/newfolder'
+EOF
+
+# 'mytestprogram.sh' file is there, owned by the current user
+ls -l
+
+# change ownership of the program to root user and root group
+sudo chown root:root 'mytestprogram.sh'
+```
+
+```bash
+# 'mytestprogram.sh' file is there, owned by the root user
+ls -l
+
+sudo chmod u+x,g+x,o+x 'mytestprogram.sh'
+# change file mode bits
+sudo chmod u+s 'mytestprogram.sh'
+```
+
+```bash
+# should run :), but currently doesn't
+bash 'mytestprogram.sh'
+```
+
+
 ## Other Helpful Bits
 
 ### !$
