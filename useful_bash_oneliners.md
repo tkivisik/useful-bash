@@ -502,6 +502,8 @@ Examples:
 ```bash  
 $ <CTRL+R>g     # finds the latest line from history with g in it  
 $ <CTRL+R>cd    # finds the latest line from history with cd in it  
+
+$ <CTRL+R>git clone<CTRL+R> # finds the second to last match to 'git clone'
 ```
 
 ### CTRL+L or clear
