@@ -105,7 +105,14 @@ $ find . -type f -maxdepth 2
 
 ```
 
-## Drives and Devices
+## System Info, Drives and Devices
+
+### inxi
+inxi pretty prints system information. Very useful when reporting issues.
+
+```bash
+$ inxi -Fxz
+```
 
 ### fdisk
 fdisk allows to display and manipulate the disk partition table.
