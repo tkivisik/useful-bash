@@ -2,29 +2,34 @@
 mkdir -p playground/paste_testing_folder playground/cut_testing_folder playground/cat_testing_folder playground/diff_testing_folder playground/split_testing_folder
 
 # Files for paste_testing_folder
-name_file_path=playground/paste_testing_folder/names.txt
-echo "Hannah" > "$name_file_path"
-echo "Joe" >> "$name_file_path"
-echo "Maria" >> "$name_file_path"
-echo "Sebastian" >> "$name_file_path"
-echo "Kristine" >> "$name_file_path"
-echo "Jean" >> "$name_file_path"
+file_path=playground/paste_testing_folder/names.txt
+cat > "$file_path" << EOF
+Hannah
+Joe
+Maria
+Sebastian
+Kristine
+Jean
+EOF
 
-age_file_path=playground/paste_testing_folder/ages.txt
-echo "21" > "$age_file_path"
-#TODO - Write into an array of ages.
-echo "22" >> "$age_file_path"
-echo "20" >> "$age_file_path"
-echo "23" >> "$age_file_path"
-echo "30" >> "$age_file_path"
-echo "33" >> "$age_file_path"
+file_path=playground/paste_testing_folder/ages.txt
+cat > "$file_path" << EOF
+21
+22
+20
+23
+30
+33
+EOF
 
 # Files for cut_testing_folder
-cut_file_path=playground/cut_testing_folder/cut_the_third_column.txt
-echo "a,1,2,3,4,5,6" > "$cut_file_path"
-echo "b,4,3,5,0,8,9" >> "$cut_file_path"
-echo "c,8,4,6,4,8,6" >> "$cut_file_path"
-echo "d,4,6,3,5,5,5" >> "$cut_file_path"
+file_path=playground/cut_testing_folder/cut_the_third_column.txt
+cat > "$file_path" << EOF
+a,1,2,3,4,5,6
+b,4,3,5,0,8,9
+c,8,4,6,4,8,6
+d,4,6,3,5,5,5
+EOF
 
 # Files for cat_testing_folder
 echo "name,fame" > "playground/cat_testing_folder/column_header.txt"
@@ -38,13 +43,15 @@ older_file_path=playground/diff_testing_folder/base_file.txt
 newer_file_path=playground/diff_testing_folder/lines_added_removed.txt
 newest_file_path=playground/diff_testing_folder/lines_changed.txt
 
-echo "first" > "$older_file_path"
-echo "second" >> "$older_file_path"
-echo "third" >> "$older_file_path"
-echo "fourth" >> "$older_file_path"
-echo "fifth" >> "$older_file_path"
-echo "sixth" >> "$older_file_path"
-echo "seventh" >> "$older_file_path"
+cat > "$older_file_path" << EOF
+first
+second
+third
+fourth
+fifth
+sixth
+seventh
+EOF
 
 cp $older_file_path $newer_file_path
 ## Deletes the 4th to 5th line
