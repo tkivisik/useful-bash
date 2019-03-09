@@ -103,3 +103,20 @@ echo !$         # output: 2 3
 echo 1 2 3"4 5" # output: 1 2 34 5
 echo !$         # output: 34 5
 ```
+
+## Arithmetic
+
+### bc
+
+Basic Calculator
+
+```bash
+echo "1+1" | bc
+```
+
+### let
+
+```bash
+let "x=1+1"
+echo $x
+```
