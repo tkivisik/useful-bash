@@ -196,3 +196,12 @@ pkexec allows to execute commands as another user (by default as root). E.g. can
 ```bash
 $ pkexec echo "You are prompted to enter your root password to print this message"
 ```
+
+### xdg-open
+
+xdg-open allows to open a folder in a new window, not a terminal. It's handy after going deep into a folder structure in a terminal, and when you would like to continue using a normal window. It can also be used to open files.
+
+```bash
+xdg-open .              # open the current working directory
+xdg-open some_file.pdf  # open a pdf file
+```
